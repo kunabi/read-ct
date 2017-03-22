@@ -1,6 +1,6 @@
-#lang racket
+#lang racket/base
 
-(require file/gunzip json)
+(require racket/function file/gunzip json)
 
 (define (process-ct-file file)
   (define-values (in-pipe out-pipe) (make-pipe))

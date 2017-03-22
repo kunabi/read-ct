@@ -1,4 +1,4 @@
-(ql:quickload '(:jonathan :gzip-stream :cl-fad :fare-memoization :trivial-core-dump))
+(ql:quickload '(:jonathan :gzip-stream :cl-fad :fare-memoization :trivial-dump-core))
 
 
 (defvar *fields* '(
