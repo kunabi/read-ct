@@ -1,0 +1,1 @@
+gxc -exe -o gerbil read-ct-gerbil.scm
