@@ -1,12 +1,24 @@
 package: read-ct
 (export main)
-(import :std/iter)
+(import :std/iter :std/text/zlib :std/text/json)
+
 
 (def (main . args)
-  (list-of-ct-files "~/cs/"))
+    (for ((x (list-of-ct-files '("~/cs/"))))
+	 ;;(read-ct-file x))
+	 (displayln x)))
+
+(def (read-ct-file file)
+  (displayln "reading:" file)
+  (map
+    (lambda (line)
+      (displayln "line:" (hash->list line)))
+    (call-with-input-file file
+      (lambda (file-input)
+	(hash->list (read-json (open-input-string (bytes->string (uncompress file-input)))))))))
+
 
 (def (find-files file-or-dir filter)
-  (displayln "find-files: " file-or-dir)
   (if (eq? (file-type file-or-dir) 'directory)
       (apply
        append
