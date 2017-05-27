@@ -48,6 +48,7 @@
 
 (defun parse-ct-contents (x)
   "process the json output"
+  (format t "doing: ~A~%" x)
   (handler-case
       (progn
 	(let* ((records (second (read-json-gzip-file x)))

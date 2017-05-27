@@ -1,22 +1,22 @@
 package: read-ct
 (export main)
-(import :std/iter :std/text/zlib :std/text/json)
+(import :std/iter :std/text/zlib :std/text/json :std/srfi/19)
 
 (def (main . args)
   (map
     (lambda (x)
       (read-ct-file x))
-      (list-of-ct-files '("~/cs/"))))
+      (list-of-ct-files '("."))))
 
 (def (read-ct-file file)
-  ;;(displayln "reading:" file)
-  (call-with-input-file file
-    (lambda (file-input)
-      (let (( mytables (hash-ref (read-json (open-input-string (bytes->string (uncompress file-input)))) 'Records)))
-	(map
-	  (lambda (row)
-	    (displayln (hash->list (hash-ref row 'userIdentity))))
-	  mytables)))))
+     (displayln "doing:" file)
+     (call-with-input-file file
+       (lambda (file-input)
+	 (let (( mytables (hash-ref (read-json (open-input-string (bytes->string (uncompress file-input)))) 'Records)))
+	   (map
+	    (lambda (row)
+	      (displayln (hash->list (hash-ref row 'userIdentity))))
+	    mytables)))))
 
 (def (find-files file-or-dir filter)
   (if (eq? (file-type file-or-dir) 'directory)
@@ -26,7 +26,6 @@ package: read-ct
         (lambda (f)
           (find-files (path-expand f file-or-dir) filter))
         (directory-files file-or-dir)))
-
       (if (filter file-or-dir)
           (list file-or-dir)
           (list))))
