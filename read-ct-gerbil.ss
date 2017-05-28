@@ -2,15 +2,10 @@ package: read-ct
 (export main)
 
 (import
-  :gerbil/gambit/exceptions
-  :gerbil/gambit/hash
-  :gerbil/gambit/os
-  :gerbil/gambit/ports
-  :gerbil/gambit/readtables
+  :gerbil/gambit
   :std/iter
   :std/text/json
   :std/text/zlib
-  :gerbil/gambit/system
   :std/srfi/19)
 
 (def (main . args)
