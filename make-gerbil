@@ -1,1 +1,1 @@
-gxc -exe -o gerbil read-ct-gerbil.scm
+gxc -O -exe -gsc-option2 -prelude '(declare (not safe))' -o gerbil read-ct-gerbil.scm
