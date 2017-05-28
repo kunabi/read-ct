@@ -1,2 +1,1 @@
-#gxc -O -static -ld-options '-lz' -exe -gsc-option2 -prelude '(declare (not safe))' -o gerbil read-ct-gerbil.scm
-gxc -O -static -ld-options '-lz' -exe -o gerbil read-ct-gerbil.scm
+gxc -O -static -ld-options '-lz' -exe -gsc-option2 -prelude '(declare (not safe))' read-ct-gerbil.ss
