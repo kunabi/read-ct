@@ -20,7 +20,7 @@ package: read-ct
       (lambda (x)
 	(read-ct-file x txn)
 	(set! count (+ count 1))
-	(if (> count 1000)
+	(if (> count 100)
 	  (begin
 	    (displayln "GC time!")
 	    (lmdb-txn-commit txn)
@@ -53,8 +53,7 @@ package: read-ct
 		    'responseElements
 		    'sourceIPAddress
 		    'userAgent
-		    'userIdentity
-		    ))
+		    'userIdentity))
 
 (define 102-fields 101-fields)
 (define 103-fields 101-fields)
